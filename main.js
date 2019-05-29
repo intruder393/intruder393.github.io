@@ -1,6 +1,7 @@
 window.onload = () => {
 	const buttonUSB = document.getElementById('pair-usb');
 	const buttonBTE = document.getElementById('pair-bte');
+	const buttonPrint = document.getElementById('print-img');
 	const deviceName = document.getElementById("device-name");
 
 	const ESC_CHAR = 27;
@@ -25,6 +26,7 @@ window.onload = () => {
 	canvasData = ctx.getImageData(0, 0, w, h).data;
 
 	buttonUSB.addEventListener('pointerup', (event) => {
+		//todo:
 		navigator.usb.requestDevice({
 			filters: [ deviceFilter ]
 		})
@@ -59,6 +61,12 @@ window.onload = () => {
 		})
 		.catch((e) => {
 			console.log('Connection failed!', e.message);
+		});
+	});
+
+	buttonPrint.addEventListener('pointerup', async event => {
+		await printImage().catch(error => {
+			console.error('Error when printing!', error.message);
 		});
 	});
 
