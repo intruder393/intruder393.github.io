@@ -6721,7 +6721,7 @@ window.onload = function () {
         var result = encoder.initialize() // .image(image, 297, 730, 'bayer')
         .image(image, 408, 1008, 'bayer').encode();
         console.log(result);
-        device.transferOut(1, result).catch(function (error) {
+        device.transferOut(2, result).catch(function (error) {
           console.log('Sending error! ', error.message);
         });
       }; // image.src = '/upload/cat_384.png';
@@ -6761,7 +6761,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64227" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51034" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
