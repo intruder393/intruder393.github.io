@@ -36,7 +36,7 @@ window.onload = () => {
 						.encode();
 
 					console.log(result);
-					device.transferOut(1, result).catch(error => {
+					device.transferOut(2, result).catch(error => {
 						console.log('Sending error! ', error.message);
 					});
 				};
