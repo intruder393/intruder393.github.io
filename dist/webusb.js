@@ -6694,8 +6694,6 @@ window.onload = function () {
   var deviceFilter = {};
 
   buttonUSB.onclick = function () {
-    var encoder = new _escPosEncoder.default();
-    console.log(encoder);
     navigator.usb.requestDevice({
       filters: [deviceFilter]
     }).then(function (selectedDevice) {
@@ -6706,30 +6704,8 @@ window.onload = function () {
       return device.selectConfiguration(1);
     }).then(function () {
       return device.claimInterface(device.configuration.interfaces[0].interfaceNumber);
-    }) // .then(() => device.controlTransferOut({
-    // 	requestType: 'class',
-    // 	recipient: 'interface',
-    // 	request: 0x22,
-    // 	value: 0x01,
-    // 	index: device.configuration.interfaces[0].interfaceNumber
-    // })) // Ready to receive data
-    .then(function () {
-      var image = new Image();
-      console.log(device);
-
-      image.onload = function () {
-        var result = encoder.initialize() // .image(image, 297, 730, 'bayer')
-        .image(image, 408, 1008, 'bayer').encode();
-        console.log(result);
-        device.transferOut(2, result).catch(function (error) {
-          console.log('Sending error! ', error.message);
-        });
-      }; // image.src = '/upload/cat_384.png';
-
-
-      image.src = '/img/ticket-1_408x1008.png';
     }).catch(function (e) {
-      console.error('USB failed!', e.message);
+      console.error('Error!', e.message);
     });
   };
 };
@@ -6761,7 +6737,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51034" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63687" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
